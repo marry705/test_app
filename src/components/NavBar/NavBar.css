@@ -1,0 +1,9 @@
+.nav-wrapper {
+    position: fixed;
+    top: 0;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px;
+}
