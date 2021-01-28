@@ -1,9 +1,7 @@
-import { SERVER_HOST } from '../constants';
-
-function getRequest() {
-  return fetch(SERVER_HOST)
+function getRequest<T>(url: string): Promise<T> {
+  return fetch(url)
     .then((response) => response.json())
-    .catch((error) => error);
+    .catch((error: Error) => error);
 }
 
 export default getRequest;

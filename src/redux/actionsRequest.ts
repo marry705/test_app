@@ -1,5 +1,5 @@
-import { BitcoinAction, RequestAction, Bitcoin } from './type';
-import { REQUEST, DATA } from '../constants';
+import { RequestAction } from './type';
+import { REQUEST } from '../constants';
 
 export const requestData = (): RequestAction => ({
   type: REQUEST.REQUESTED_DATA,
@@ -19,9 +19,4 @@ export const showError = (data: string): RequestAction => ({
 export const clearError = (): RequestAction => ({
   type: REQUEST.CLEAR_ERROR_MESSAGE,
   payload: '',
-});
-
-export const updateData = (data: Bitcoin): BitcoinAction => ({
-  type: DATA.UPDATE_DATE,
-  payload: data,
 });

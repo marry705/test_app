@@ -1,14 +1,16 @@
 import * as React from 'react';
+import { Bitcoin } from '../../redux/type';
 
 interface Props {
-  data: string
+  bitcoin: Bitcoin
 }
 
-const BitcoinRow: React.FC<Props> = ({ data }: Props) => (
+const BitcoinRow: React.FC<Props> = ({ bitcoin }: Props) => (
   <>
     <tr>
-      <th>Ячейка 1</th>
-      <th>Ячейка 2</th>
+      <th>{bitcoin.code}</th>
+      <th>{bitcoin.description}</th>
+      <th>{bitcoin.rate}</th>
     </tr>
   </>
 );

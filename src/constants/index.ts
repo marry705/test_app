@@ -7,6 +7,7 @@ export const REQUEST = {
 
 export const DATA = {
   UPDATE_DATE: 'UPDATE_DATE',
+  UPDATE_SORT_FIELD: 'UPDATE_SORT_FIELD',
 };
 
 export const ROUTES = {

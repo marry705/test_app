@@ -1,3 +1,4 @@
+import { CombinedState } from 'redux';
 import { REQUEST, DATA } from '../constants';
 
 export type RequestState = {
@@ -6,13 +7,17 @@ export type RequestState = {
 };
 
 export type Bitcoin = {
-    id: string,
-    data: string,
+    code: string,
+    symbol: string,
+    rate: string,
+    description: string,
+    'rate_float': number,
 };
 
 export type BitcoinDataState = {
     bitcoinData: Bitcoin[],
     time: string,
+    sortField: 'code' | 'rate',
 };
 
 interface requestDataAction {
@@ -40,16 +45,14 @@ export type RequestAction = requestDataAction | requestFinishedAction | showErro
 
 interface updateDataAction {
     type: typeof DATA.UPDATE_DATE,
-    payload: Bitcoin,
+    payload: Bitcoin[],
 }
 
-export type BitcoinAction = updateDataAction;
+interface updateSortFieldAction {
+    type: typeof DATA.UPDATE_SORT_FIELD,
+    payload: 'code' | 'rate',
+}
 
-export type StateType = {
-    request: RequestState,
-    bitcoinData: BitcoinDataState,
-};
+export type BitcoinAction = updateDataAction | updateSortFieldAction;
 
-export type SateAction = RequestAction | BitcoinAction;
-
-export type DispatchType = (args: SateAction) => SateAction;
+export type StateType = CombinedState<{ request: RequestState; bitcoinData: BitcoinDataState; }>;
