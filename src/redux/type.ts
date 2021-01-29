@@ -1,5 +1,5 @@
 import { CombinedState } from 'redux';
-import { REQUEST, DATA } from '../constants';
+import { REQUEST, DATA, ANALYTIC } from '../constants';
 
 export type RequestState = {
     isLoading: boolean,
@@ -18,6 +18,17 @@ export type BitcoinDataState = {
     bitcoinData: Bitcoin[],
     time: string,
     sortField: 'code' | 'rate',
+};
+
+export type TagCount = {
+    tag: string,
+    count: number,
+};
+
+export type AnalyticDataState = {
+    webpage: string,
+    tagsCount: TagCount[],
+    length: number,
 };
 
 interface requestDataAction {
@@ -63,4 +74,13 @@ export type updateSortFieldAction = {
 
 export type BitcoinAction = updateDataAction | updateSortFieldAction;
 
-export type StateType = CombinedState<{ request: RequestState; bitcoinData: BitcoinDataState; }>;
+export type AnalyticDataAction = {
+    type: typeof ANALYTIC.UPDATE_ANALYTIC,
+    payload: string,
+};
+
+export type StateType = CombinedState<{
+    request: RequestState;
+    bitcoinData: BitcoinDataState;
+    analyticData: AnalyticDataState;
+}>;

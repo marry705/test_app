@@ -11,6 +11,10 @@ export const DATA = {
   UPDATE_SORT_FIELD: 'UPDATE_SORT_FIELD',
 };
 
+export const ANALYTIC = {
+  UPDATE_ANALYTIC: 'UPDATE_ANALYTIC',
+};
+
 export const ROUTES = {
   CURRENCIES: '/currencies',
   ANALYSIS: '/analysis',
