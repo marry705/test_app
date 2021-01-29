@@ -20,3 +20,8 @@ export const clearError = (): RequestAction => ({
   type: REQUEST.CLEAR_ERROR_MESSAGE,
   payload: '',
 });
+
+export const requestStoped = (): RequestAction => ({
+  type: REQUEST.STOP_REQUESTED_DATA,
+  payload: '',
+});

@@ -40,15 +40,23 @@ interface clearErrorAction {
     payload: string,
 }
 
-// eslint-disable-next-line max-len
-export type RequestAction = requestDataAction | requestFinishedAction | showErrorAction | clearErrorAction;
+interface requestStopedAction {
+    type: typeof REQUEST.STOP_REQUESTED_DATA,
+    payload: string,
+}
 
-interface updateDataAction {
+export type RequestAction = requestDataAction |
+    requestFinishedAction |
+    showErrorAction |
+    clearErrorAction |
+    requestStopedAction;
+
+export type updateDataAction = {
     type: typeof DATA.UPDATE_DATE,
     payload: Bitcoin[],
 }
 
-interface updateSortFieldAction {
+export type updateSortFieldAction = {
     type: typeof DATA.UPDATE_SORT_FIELD,
     payload: 'code' | 'rate',
 }

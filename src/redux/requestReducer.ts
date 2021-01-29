@@ -12,7 +12,7 @@ const requestReducer = (
 ): RequestState => {
   switch (action.type) {
     case REQUEST.REQUESTED_DATA:
-      return { ...state, isLoading: true, error: '' };
+      return { ...state, isLoading: true };
 
     case REQUEST.REQUEST_FINISHED:
       return { ...state, isLoading: false };

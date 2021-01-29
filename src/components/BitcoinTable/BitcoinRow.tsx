@@ -8,9 +8,9 @@ interface Props {
 const BitcoinRow: React.FC<Props> = ({ bitcoin }: Props) => (
   <>
     <tr>
-      <th>{bitcoin.code}</th>
-      <th>{bitcoin.description}</th>
-      <th>{bitcoin.rate}</th>
+      <td>{bitcoin.code}</td>
+      <td>{bitcoin.description}</td>
+      <td>{bitcoin.rate_float}</td>
     </tr>
   </>
 );

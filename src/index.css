@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
-:root{
+:root {
   --main-light-color:#E5E5E5;
+  --table-dark-color: #AFCDE7;
+  --table-light-color: #D8E6F3;
 }
 
 * {
@@ -17,10 +19,11 @@ html, body {
   background-color: var(--main-light-color);
 }
 
-.main-wrapper{
+.main-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh; 
+  padding: 0 5%;
 }

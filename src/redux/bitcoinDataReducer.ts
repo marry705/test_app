@@ -1,5 +1,7 @@
 import { DATA } from '../constants';
-import { Bitcoin, BitcoinDataState, BitcoinAction } from './type';
+import {
+  Bitcoin, BitcoinDataState, BitcoinAction, updateDataAction, updateSortFieldAction,
+} from './type';
 
 let bitcoinData: Bitcoin[] = [];
 
@@ -14,17 +16,22 @@ const bitcoinDataReducer = (
   action: BitcoinAction,
 ): BitcoinDataState => {
   switch (action.type) {
-    case DATA.UPDATE_DATE:
-      // eslint-disable-next-line max-len
-      bitcoinData = action.payload.sort((bincoin1: Bitcoin, bincoin2: Bitcoin) => (bincoin1[state.sortField] > bincoin2[state.sortField] ? -1 : 1));
+    case DATA.UPDATE_DATE: {
+      bitcoinData = (<updateDataAction>action).payload
+        // eslint-disable-next-line max-len
+        .sort((bincoin1: Bitcoin, bincoin2: Bitcoin) => (bincoin1[state.sortField] > bincoin2[state.sortField] ? -1 : 1));
 
       return { ...state, time: new Date().toString(), bitcoinData };
+    }
 
-    case DATA.UPDATE_SORT_FIELD:
-      // eslint-disable-next-line max-len
-      bitcoinData = state.bitcoinData.sort((bincoin1: Bitcoin, bincoin2: Bitcoin) => (bincoin1[action.payload] > bincoin2[action.payload] ? -1 : 1));
+    case DATA.UPDATE_SORT_FIELD: {
+      const sortField = (<updateSortFieldAction>action).payload;
+      bitcoinData = state.bitcoinData
+        // eslint-disable-next-line max-len
+        .sort((bincoin1: Bitcoin, bincoin2: Bitcoin) => (bincoin1[sortField] > bincoin2[sortField] ? -1 : 1));
 
-      return { ...state, sortField: action.payload };
+      return { ...state, sortField };
+    }
 
     default: return state;
   }

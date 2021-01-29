@@ -1,10 +1,13 @@
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { requestData } from '../../redux/actionsRequest';
+import { requestData, requestStoped } from '../../redux/actionsRequest';
 import { updateSortField } from '../../redux/actionBitcoin';
 import { StateType } from '../../redux/type';
+import { dateOptions } from '../../constants';
 import BitcoinRow from './BitcoinRow';
+
+import './BitcoinTable.css';
 
 const BitcoinTable: React.FC = () => {
   const dispatch = useDispatch();
@@ -13,38 +16,34 @@ const BitcoinTable: React.FC = () => {
 
   React.useEffect(() => {
     dispatch(requestData());
-    const interval = setInterval(() => {
-      dispatch(requestData());
-      console.log('123');
-    }, 15000);
-    return () => clearInterval(interval);
-  }, []);
+    return () => dispatch(requestStoped());
+  }, [dispatch]);
 
   if (error) {
     return (
-      <div>
-        Ошибка:
-        {error}
-      </div>
+      <div>{error}</div>
     );
   } if (isLoading) {
-    return <div>Загрузка...</div>;
+    return <div>Loading...</div>;
   }
   return (
-    <table>
-      <thead>
-        <tr>
-          <th onClick={() => dispatch(updateSortField('code'))}>Code</th>
-          <th>Description</th>
-          <th onClick={() => dispatch(updateSortField('rate'))}>Rate</th>
-        </tr>
-      </thead>
-      <tbody>
-        {bitcoinData.map((bitcoin, index) => (
-          <BitcoinRow key={index} bitcoin={bitcoin} />
-        ))}
-      </tbody>
-    </table>
+    <>
+      <div className="time-field">{new Date(time).toLocaleDateString('ru', dateOptions)}</div>
+      <table className="bitcoin-table">
+        <thead>
+          <tr>
+            <th onClick={() => dispatch(updateSortField('code'))}>Code</th>
+            <th>Description</th>
+            <th onClick={() => dispatch(updateSortField('rate'))}>Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          {bitcoinData.map((bitcoin, index) => (
+            <BitcoinRow key={index} bitcoin={bitcoin} />
+          ))}
+        </tbody>
+      </table>
+    </>
   );
 };
 
