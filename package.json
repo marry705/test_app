@@ -44,7 +44,6 @@
     "ts-jest": "^26.4.4",
     "typescript": "^4.1.3",
     "webpack": "^4.46.0",
-    "webpack-bundle-analyzer": "^4.3.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.2"
   },
@@ -80,7 +79,6 @@
   "scripts": {
     "build": "webpack --mode production --progress --hide-modules",
     "start": "webpack-dev-server --open --hot",
-    "bundle-size": "webpack-bundle-analyzer --port 3001 dist/stats.json",
     "test": "jest",
     "lint": "eslint src --ext .ts,.tsx",
     "lint:fix": "npm run lint -- --fix"

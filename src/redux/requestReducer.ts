@@ -1,4 +1,4 @@
-import { REQUEST } from '../constants';
+import { REQUEST, ANALYTIC } from '../constants';
 import { RequestState, RequestAction } from './type';
 
 const initialState: RequestState = {
@@ -12,6 +12,7 @@ const requestReducer = (
 ): RequestState => {
   switch (action.type) {
     case REQUEST.REQUESTED_DATA:
+    case ANALYTIC.REQUESTED_ANALYTIC:
       return { ...state, isLoading: true };
 
     case REQUEST.REQUEST_FINISHED:

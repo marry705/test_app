@@ -1,9 +1,17 @@
-import { AnalyticDataAction } from './type';
+import { AnalyticDataAction, tagsCount } from './type';
 import { ANALYTIC } from '../constants';
 
-const updateAnalyticData = (data: string): AnalyticDataAction => ({
-  type: ANALYTIC.UPDATE_ANALYTIC,
+export const updateAnalyticTagCount = (data: tagsCount): AnalyticDataAction => ({
+  type: ANALYTIC.UPDATE_TAG_COUNT,
   payload: data,
 });
 
-export default updateAnalyticData;
+export const updateLongestPath = (data: number): AnalyticDataAction => ({
+  type: ANALYTIC.UPDATE_LENGTH,
+  payload: data,
+});
+
+export const requestAnalyticData = (data: string): AnalyticDataAction => ({
+  type: ANALYTIC.REQUESTED_ANALYTIC,
+  payload: data,
+});

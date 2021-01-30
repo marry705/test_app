@@ -6,6 +6,10 @@ export type RequestState = {
     error: string,
 };
 
+export type tagsCount = {
+    [key: string]: number,
+}
+
 export type Bitcoin = {
     code: string,
     symbol: string,
@@ -20,14 +24,8 @@ export type BitcoinDataState = {
     sortField: 'code' | 'rate',
 };
 
-export type TagCount = {
-    tag: string,
-    count: number,
-};
-
 export type AnalyticDataState = {
-    webpage: string,
-    tagsCount: TagCount[],
+    tagsCount: tagsCount,
     length: number,
 };
 
@@ -74,10 +72,24 @@ export type updateSortFieldAction = {
 
 export type BitcoinAction = updateDataAction | updateSortFieldAction;
 
-export type AnalyticDataAction = {
-    type: typeof ANALYTIC.UPDATE_ANALYTIC,
+export type updateAnalyticTagCountAction = {
+    type: typeof ANALYTIC.UPDATE_TAG_COUNT,
+    payload: tagsCount,
+}
+
+export type updateLongestPathAction = {
+    type: typeof ANALYTIC.UPDATE_LENGTH,
+    payload: number,
+}
+
+export type requestAnalicDataAction = {
+    type: typeof ANALYTIC.REQUESTED_ANALYTIC,
     payload: string,
-};
+}
+
+export type AnalyticDataAction = updateLongestPathAction |
+    updateAnalyticTagCountAction |
+    requestAnalicDataAction;
 
 export type StateType = CombinedState<{
     request: RequestState;

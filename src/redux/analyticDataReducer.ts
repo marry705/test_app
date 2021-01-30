@@ -1,10 +1,10 @@
 import { ANALYTIC } from '../constants';
-import { AnalyticDataState, AnalyticDataAction } from './type';
-import { getTagsCount, getLongestPath } from '../services/analyticService';
+import {
+  AnalyticDataState, AnalyticDataAction, updateAnalyticTagCountAction, updateLongestPathAction,
+} from './type';
 
 const initialState: AnalyticDataState = {
-  webpage: '',
-  tagsCount: [],
+  tagsCount: {},
   length: 0,
 };
 
@@ -13,10 +13,12 @@ const analyticDataReducer = (
   action: AnalyticDataAction,
 ): AnalyticDataState => {
   switch (action.type) {
-    case ANALYTIC.UPDATE_ANALYTIC: {
-      const tagsCount = getTagsCount(action.payload);
-      const length = getLongestPath(tagsCount[0]);
-      return { ...state, length, tagsCount };
+    case ANALYTIC.UPDATE_TAG_COUNT: {
+      return { ...state, tagsCount: (<updateAnalyticTagCountAction>action).payload };
+    }
+
+    case ANALYTIC.UPDATE_LENGTH: {
+      return { ...state, length: (<updateLongestPathAction>action).payload };
     }
 
     default: return state;
