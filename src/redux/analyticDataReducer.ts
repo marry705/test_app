@@ -1,4 +1,4 @@
-import { ANALYTIC } from '../constants';
+import { ANALYTIC, REQUEST } from '../constants';
 import {
   AnalyticDataState, AnalyticDataAction, updateAnalyticTagCountAction, updateLongestPathAction,
 } from './type';
@@ -13,6 +13,10 @@ const analyticDataReducer = (
   action: AnalyticDataAction,
 ): AnalyticDataState => {
   switch (action.type) {
+    case REQUEST.ADD_ERROR_MESSAGE: {
+      return { ...state, length: 0, tagsCount: {} };
+    }
+
     case ANALYTIC.UPDATE_TAG_COUNT: {
       return { ...state, tagsCount: (<updateAnalyticTagCountAction>action).payload };
     }

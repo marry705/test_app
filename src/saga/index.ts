@@ -47,7 +47,7 @@ function* requestPageWorker({ payload }: requestAnalicDataAction) {
     const response = yield call(() => getPage(payload));
     const tagCount = yield call(() => getTagsCount(response));
     yield put(updateAnalyticTagCount(tagCount));
-    const length = yield call(() => getLongestPath(response, tagCount));
+    const length = yield call(() => getLongestPath(response, Object.keys(tagCount)[0]));
     yield put(updateLongestPath(length));
     yield put(requestFinished());
   } catch (e) {

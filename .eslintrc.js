@@ -27,6 +27,7 @@ module.exports = {
     'react/prop-types': 'off',
     'no-bitwise': ['error', { allow: ['~'] }],
     'no-use-before-define': 'off',
+    'no-nested-ternary': 'off',
     'import/extensions': ['error', 'never', { ignorePackages: true }],
     'import/no-unresolved': 'error',
     'import/no-extraneous-dependencies': ['error', { peerDependencies: true }],

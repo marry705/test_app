@@ -28,7 +28,7 @@ const BitcoinTable: React.FC = () => {
   }
   return (
     <>
-      <div className="time-field">{new Date(time).toLocaleDateString('ru', dateOptions)}</div>
+      <div className="info-field">{new Date(time).toLocaleDateString('ru', dateOptions)}</div>
       <table className="bitcoin-table">
         <thead>
           <tr>
