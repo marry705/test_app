@@ -28,6 +28,7 @@ module.exports = {
     'no-bitwise': ['error', { allow: ['~'] }],
     'no-use-before-define': 'off',
     'no-nested-ternary': 'off',
+    'max-len': ['error', { code: 160, tabWidth: 4 }],
     'import/extensions': ['error', 'never', { ignorePackages: true }],
     'import/no-unresolved': 'error',
     'import/no-extraneous-dependencies': ['error', { peerDependencies: true }],

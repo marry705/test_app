@@ -38,8 +38,8 @@ const BitcoinTable: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {bitcoinData.map((bitcoin, index) => (
-            <BitcoinRow key={index} bitcoin={bitcoin} />
+          {bitcoinData.map((bitcoin) => (
+            <BitcoinRow key={bitcoin.rate} bitcoin={bitcoin} />
           ))}
         </tbody>
       </table>

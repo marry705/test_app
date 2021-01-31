@@ -23,11 +23,11 @@ export function getTagsCount(webpage: string): tagsCount {
 
 export function getLongestPath(webpage: string, tagName: string): number {
   const doc = new DOMParser().parseFromString(webpage, 'text/html');
-  let route = getDomDepthLevel(doc, tagName);
+  const route = getDomDepthLevel(doc, tagName);
   return route.route.length;
 }
 
-function getDomDepthLevel(root: Document, tagName: string): {route: Document[], level: number} {
+function getDomDepthLevel(root: Document | Element, tagName: string): {route: (Document | Element)[], level: number} {
   let pathInfo = { route: [root], level: 0 };
   for (let i = 0, j = root.children.length; i < j; i += 1) {
     const curNodePathInfo = getDomDepthLevel(root.children[i], tagName);

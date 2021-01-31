@@ -18,7 +18,6 @@ const bitcoinDataReducer = (
   switch (action.type) {
     case DATA.UPDATE_DATE: {
       bitcoinData = (<updateDataAction>action).payload
-        // eslint-disable-next-line max-len
         .sort((bincoin1: Bitcoin, bincoin2: Bitcoin) => (bincoin1[state.sortField] > bincoin2[state.sortField] ? -1 : 1));
 
       return { ...state, time: new Date().toString(), bitcoinData };
@@ -27,7 +26,6 @@ const bitcoinDataReducer = (
     case DATA.UPDATE_SORT_FIELD: {
       const sortField = (<updateSortFieldAction>action).payload;
       bitcoinData = state.bitcoinData
-        // eslint-disable-next-line max-len
         .sort((bincoin1: Bitcoin, bincoin2: Bitcoin) => (bincoin1[sortField] > bincoin2[sortField] ? -1 : 1));
 
       return { ...state, sortField };

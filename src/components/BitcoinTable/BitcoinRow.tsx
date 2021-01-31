@@ -6,13 +6,11 @@ interface Props {
 }
 
 const BitcoinRow: React.FC<Props> = ({ bitcoin }: Props) => (
-  <>
-    <tr>
-      <td>{bitcoin.code}</td>
-      <td>{bitcoin.description}</td>
-      <td>{bitcoin.rate_float}</td>
-    </tr>
-  </>
+  <tr>
+    <td>{bitcoin.code}</td>
+    <td>{bitcoin.description}</td>
+    <td>{bitcoin.rate_float}</td>
+  </tr>
 );
 
 export default BitcoinRow;

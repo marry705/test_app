@@ -16,7 +16,6 @@ import App from './App';
 
 const sagaMiddleware = createSagaMiddleware();
 
-// eslint-disable-next-line max-len
 const store: Store<StateType, AnyAction> & { dispatch: Dispatch } = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 
 sagaMiddleware.run(rootSaga);
