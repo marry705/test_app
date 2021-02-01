@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
 import 'regenerator-runtime/runtime';
 import createSagaMiddleware from 'redux-saga';
 import {
   applyMiddleware, createStore, Store, AnyAction, Dispatch,
 } from 'redux';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import rootReducer from './redux/index';

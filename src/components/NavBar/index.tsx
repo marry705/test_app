@@ -6,8 +6,12 @@ import './NavBar.css';
 
 const NavBar: React.FC = () => (
   <nav className="nav-wrapper">
-    <NavLink to={ROUTES.CURRENCIES}>Bitcoin Data</NavLink>
-    <NavLink to={ROUTES.ANALYSIS}>Analysis</NavLink>
+    <NavLink className="nav-item" activeClassName="selected-item" to={ROUTES.CURRENCIES}>
+      Bitcoin Data
+    </NavLink>
+    <NavLink className="nav-item" activeClassName="selected-item" to={ROUTES.ANALYSIS}>
+      Analysis
+    </NavLink>
   </nav>
 );
 

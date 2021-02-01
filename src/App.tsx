@@ -11,11 +11,13 @@ import './index.css';
 const App: React.FC = () => (
   <div className="main-wrapper">
     <NavBar />
-    <Switch>
-      <Route path={ROUTES.CURRENCIES} render={() => <BitcoinTable />} />
-      <Route path={ROUTES.ANALYSIS} render={() => <Analysis />} />
-      <Redirect from="/" to={ROUTES.CURRENCIES} />
-    </Switch>
+    <div className="info-wrapper">
+      <Switch>
+        <Route path={ROUTES.CURRENCIES} render={() => <BitcoinTable />} />
+        <Route path={ROUTES.ANALYSIS} render={() => <Analysis />} />
+        <Redirect from="/" to={ROUTES.CURRENCIES} />
+      </Switch>
+    </div>
   </div>
 );
 

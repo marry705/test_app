@@ -15,3 +15,8 @@ export const requestAnalyticData = (data: string): AnalyticDataAction => ({
   type: ANALYTIC.REQUESTED_ANALYTIC,
   payload: data,
 });
+
+export const clearAnalyticData = (): AnalyticDataAction => ({
+  type: ANALYTIC.CLEAR_ANALYTIC,
+  payload: null,
+});

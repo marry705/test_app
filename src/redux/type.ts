@@ -87,9 +87,15 @@ export type requestAnalicDataAction = {
     payload: string,
 }
 
+export type clearAnalyticDataAction = {
+    type: typeof ANALYTIC.CLEAR_ANALYTIC,
+    payload: null,
+}
+
 export type AnalyticDataAction = updateLongestPathAction |
     updateAnalyticTagCountAction |
-    requestAnalicDataAction;
+    requestAnalicDataAction |
+    clearAnalyticDataAction;
 
 export type StateType = CombinedState<{
     request: RequestState;

@@ -14,8 +14,9 @@ const Analysis: React.FC = () => {
 
   const keyPressHandler = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
-      e.stopPropagation();
-      dispatch(requestAnalyticData(urlInput.current.value));
+      if (urlInput.current.value) {
+        dispatch(requestAnalyticData(urlInput.current.value));
+      }
     }
   };
 

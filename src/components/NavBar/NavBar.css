@@ -1,9 +1,22 @@
 .nav-wrapper {
-    position: fixed;
-    top: 0;
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: space-around;
-    padding: 15px;
+    margin: 15px;
+    flex: 0 0 auto;
 }
+
+.selected-item, .nav-item {
+    text-decoration: none;
+    padding: 10px;
+    color: white;
+    border-radius: 5%;
+    min-width: 118px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-item { background-color: var(--content-contrast-dark-color); }
+.selected-item { background-color: var(--content-contrast-light-color); }

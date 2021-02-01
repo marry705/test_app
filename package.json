@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.tsx",
   "dependencies": {
+    "identity-obj-proxy": "^3.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
@@ -25,6 +26,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-redux": "^7.1.15",
+    "@types/react-router-dom": "^5.1.7",
     "@types/redux": "^3.6.0",
     "@typescript-eslint/eslint-plugin": "^4.14.0",
     "@typescript-eslint/parser": "^4.14.0",
@@ -52,21 +54,15 @@
     "roots": [
       "<rootDir>/src"
     ],
+    "moduleNameMapper": {
+      "\\.(css|less)$": "identity-obj-proxy"
+    },
     "modulePaths": [
       "<rootDir>/src"
     ],
     "moduleDirectories": [
       "node_modules"
     ],
-    "collectCoverageFrom": [
-      "src/**/*.{ts,tsx}"
-    ],
-    "collectCoverage": true,
-    "coverageReporters": [
-      "text",
-      "html"
-    ],
-    "coverageDirectory": "coverage/",
     "transform": {
       "^.+\\.(ts|tsx)$": "ts-jest"
     },

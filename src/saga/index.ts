@@ -1,5 +1,7 @@
 import {
-  all, fork, put, call, delay, AllEffect, ForkEffect, cancel, take, cancelled, takeLatest,
+  all, fork, put, call, takeLatest, delay,
+  AllEffect, ForkEffect,
+  cancel, take, cancelled,
 } from 'redux-saga/effects';
 import { requestFinished, showError, clearError } from '../redux/actionsRequest';
 import { updateData } from '../redux/actionBitcoin';
@@ -44,10 +46,10 @@ function* requestWatcher() {
 
 function* requestPageWorker({ payload }: requestAnalicDataAction) {
   try {
-    const response = yield call(() => getPage(payload));
-    const tagCount = yield call(() => getTagsCount(response));
+    const response = yield call(getPage, payload);
+    const tagCount = yield call(getTagsCount, response);
     yield put(updateAnalyticTagCount(tagCount));
-    const length = yield call(() => getLongestPath(response, Object.keys(tagCount)[0]));
+    const length = yield call(getLongestPath, response, Object.keys(tagCount)[0]);
     yield put(updateLongestPath(length));
     yield put(requestFinished());
   } catch (e) {
@@ -62,11 +64,9 @@ function* requestPageWatcher() {
   yield takeLatest(ANALYTIC.REQUESTED_ANALYTIC, requestPageWorker);
 }
 
-function* rootSaga(): Generator<AllEffect<ForkEffect<void>>, void, unknown> {
+export default function* rootSaga(): Generator<AllEffect<ForkEffect<void>>, void, unknown> {
   yield all([
     fork(requestWatcher),
     fork(requestPageWatcher),
   ]);
 }
-
-export default rootSaga;

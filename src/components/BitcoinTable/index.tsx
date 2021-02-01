@@ -5,7 +5,6 @@ import { requestData, requestStoped } from '../../redux/actionsRequest';
 import { updateSortField } from '../../redux/actionBitcoin';
 import { StateType } from '../../redux/type';
 import { dateOptions } from '../../constants';
-import BitcoinRow from './BitcoinRow';
 
 import './BitcoinTable.css';
 
@@ -21,7 +20,7 @@ const BitcoinTable: React.FC = () => {
 
   if (error) {
     return (
-      <div>{error}</div>
+      <div className="main-info">{error}</div>
     );
   } if (isLoading) {
     return <div>Loading...</div>;
@@ -29,7 +28,7 @@ const BitcoinTable: React.FC = () => {
   return (
     <>
       <div className="info-field">{new Date(time).toLocaleDateString('ru', dateOptions)}</div>
-      <table className="bitcoin-table">
+      <table className="info-table">
         <thead>
           <tr>
             <th onClick={() => dispatch(updateSortField('code'))}>Code</th>
@@ -39,7 +38,11 @@ const BitcoinTable: React.FC = () => {
         </thead>
         <tbody>
           {bitcoinData.map((bitcoin) => (
-            <BitcoinRow key={bitcoin.rate} bitcoin={bitcoin} />
+            <tr key={bitcoin.rate}>
+              <td>{bitcoin.code}</td>
+              <td>{bitcoin.description}</td>
+              <td>{bitcoin.rate_float}</td>
+            </tr>
           ))}
         </tbody>
       </table>

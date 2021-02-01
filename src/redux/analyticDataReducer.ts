@@ -13,7 +13,8 @@ const analyticDataReducer = (
   action: AnalyticDataAction,
 ): AnalyticDataState => {
   switch (action.type) {
-    case REQUEST.ADD_ERROR_MESSAGE: {
+    case REQUEST.ADD_ERROR_MESSAGE:
+    case ANALYTIC.CLEAR_ANALYTIC: {
       return { ...state, length: 0, tagsCount: {} };
     }
 
