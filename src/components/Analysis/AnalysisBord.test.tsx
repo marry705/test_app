@@ -11,7 +11,7 @@ import {
 import { Provider } from 'react-redux';
 
 import AnalysisBord from './AnalysisBord';
-import rootReducer from '../../redux/index';
+import rootReducer from '../../redux';
 import {
   StateType, BitcoinDataState, AnalyticDataState, RequestState,
 } from '../../redux/type';
@@ -62,7 +62,7 @@ test('Checking the initial rendering of the component AnalysisBord with Error', 
   };
   const requestState:RequestState = {
     isLoading: false,
-    error: 'Request falled',
+    error: 'Request failed',
   };
 
   const initialMainState:StateType = {
@@ -82,7 +82,7 @@ test('Checking the initial rendering of the component AnalysisBord with Error', 
     );
   });
 
-  const errorMessage = await screen.findByText('Request falled');
+  const errorMessage = await screen.findByText('Request failed');
   expect(errorMessage).toBeInTheDocument();
 });
 

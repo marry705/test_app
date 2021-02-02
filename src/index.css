@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
 :root {
-  --main-light-color: #cccccc;
   --main-dark-color: #99A3BA;
   --content-dark-color:#678EFE;
   --content-light-color:#EEF4FF;
@@ -20,7 +19,6 @@ html, body {
   font-size: 18px;
   font-style: normal;
   overflow: hidden;
-  background-color: var(--main-light-color);
 }
 .main-wrapper {
   display: flex;

@@ -15,7 +15,7 @@ import * as services from '../../services/requestService';
 import { rootSaga } from '../../saga';
 
 import BitcoinTable from '.';
-import rootReducer from '../../redux/index';
+import rootReducer from '../../redux';
 import {
   StateType, BitcoinDataState, AnalyticDataState, RequestState,
 } from '../../redux/type';

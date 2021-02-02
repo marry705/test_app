@@ -11,37 +11,40 @@ const AnalysisBord: React.FC = () => {
 
   React.useEffect(() => () => dispatch(clearAnalyticData()), [dispatch]);
 
+  if (error) {
+    return (
+      <div className="error-info">{error}</div>
+    );
+  }
+  if (isLoading) {
+    return <div className="loading-info">Loading...</div>;
+  }
+  if (!longestPath.length) {
+    return null;
+  }
   return (
     <>
-      {error
-        ? <div className="error-info">{error}</div>
-        : isLoading
-          ? <div className="loading-info">Loading...</div>
-          : longestPath.length
-            ? (
-              <div className="analysis-data">
-                <div className="info-field">
-                  {longestPath}
-                </div>
-                <table className="info-table">
-                  <thead>
-                    <tr>
-                      <th>Tag Name</th>
-                      <th>Tag Count</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {Object.keys(tagsCount).map((key) => (
-                      <tr key={key}>
-                        <td>{key}</td>
-                        <td>{tagsCount[key]}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )
-            : null}
+      <div className="analysis-data">
+        <div className="info-field">
+          {longestPath}
+        </div>
+        <table className="info-table">
+          <thead>
+            <tr>
+              <th>Tag Name</th>
+              <th>Tag Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.keys(tagsCount).map((key) => (
+              <tr key={key}>
+                <td>{key}</td>
+                <td>{tagsCount[key]}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 };

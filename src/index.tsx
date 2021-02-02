@@ -8,8 +8,8 @@ import {
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import rootReducer from './redux/index';
-import { rootSaga } from './saga/index';
+import rootReducer from './redux';
+import { rootSaga } from './saga';
 import { StateType } from './redux/type';
 
 import App from './App';

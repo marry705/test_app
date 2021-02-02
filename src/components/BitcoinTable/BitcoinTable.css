@@ -40,3 +40,4 @@
 }
 .error-info { color: var(--content-contrast-dark-color); }
 .loading-info { color: var(--content-contrast-light-color); }
+.sort-field { cursor: pointer; }

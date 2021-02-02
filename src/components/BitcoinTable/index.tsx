@@ -11,7 +11,7 @@ import './BitcoinTable.css';
 const BitcoinTable: React.FC = () => {
   const dispatch = useDispatch();
   const { isLoading, error } = useSelector((state: StateType) => state.request);
-  const { bitcoinData, time } = useSelector((state: StateType) => state.bitcoinData);
+  const { bitcoinData, time, sortField } = useSelector((state: StateType) => state.bitcoinData);
 
   React.useEffect(() => {
     dispatch(requestData());
@@ -22,18 +22,35 @@ const BitcoinTable: React.FC = () => {
     return (
       <div className="error-info">{error}</div>
     );
-  } if (isLoading) {
+  }
+  if (isLoading) {
     return <div className="loading-info">Loading...</div>;
   }
   return (
     <>
-      <div className="info-field">{new Date(time).toLocaleDateString('ru', dateOptions)}</div>
+      <div className="info-field">
+        The last update was at
+        {' '}
+        {new Date(time).toLocaleDateString('ru', dateOptions)}
+      </div>
       <table className="info-table">
         <thead>
           <tr>
-            <th onClick={() => dispatch(updateSortField('code'))}>Code</th>
+            <th
+              className="sort-field"
+              onClick={() => dispatch(updateSortField('code'))}
+            >
+              Code
+              {sortField === 'code' ? '*' : null}
+            </th>
             <th>Description</th>
-            <th onClick={() => dispatch(updateSortField('rate'))}>Rate</th>
+            <th
+              className="sort-field"
+              onClick={() => dispatch(updateSortField('rate'))}
+            >
+              Rate
+              {sortField === 'rate' ? '*' : null}
+            </th>
           </tr>
         </thead>
         <tbody>

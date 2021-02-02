@@ -19,6 +19,9 @@ function* requestWorker() {
     while (true) {
       try {
         const response = yield call(getRequest, SERVER_HOST);
+        if (!Object.values(response).length) {
+          throw new Error('No connection');
+        }
         yield put(updateData(Object.values(response)));
         yield put(requestFinished());
         yield delay(TIMER);

@@ -11,7 +11,7 @@ export function getRequest<T>(url: string): Promise<T> {
 async function getPage(adress: string): Promise<string | Error> {
   const url = adress.indexOf('http') !== -1 ? adress : `https://${adress}`;
   try {
-    const pageText = fetch(`https://cors-anywhere.herokuapp.com/${url}`, {
+    const pageText = fetch(`https://thingproxy.freeboard.io/fetch/${url}`, {
       method: 'GET',
     }).then((response) => {
       if (response.status !== 200) throw new Error('Request failed');

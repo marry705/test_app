@@ -11,7 +11,7 @@ import { Provider } from 'react-redux';
 import * as actions from '../../redux/actionAnalytic';
 
 import Analysis from '.';
-import rootReducer from '../../redux/index';
+import rootReducer from '../../redux';
 import { StateType } from '../../redux/type';
 
 const sagaMiddleware = createSagaMiddleware();
