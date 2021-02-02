@@ -1,4 +1,3 @@
-
 import { runSaga } from 'redux-saga';
 import { requestPageWorker } from '.';
 import * as services from '../services/requestService';
