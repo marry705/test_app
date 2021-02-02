@@ -26,7 +26,10 @@ beforeEach(() => {
   );
 });
 
-afterEach(cleanup);
+afterEach(() => {
+  jest.clearAllMocks();
+  cleanup();
+});
 
 test('Checking the initial rendering of the component Analysis', () => {
   expect(screen.getByPlaceholderText(/domain.tld/i)).toBeInTheDocument();
@@ -50,5 +53,5 @@ test('Checking the input with empty data in the component Analysis', async () =>
 
   fireEvent.change(inputNode, { target: { value: '' } });
   fireEvent.keyPress(inputNode, { key: 'Enter', charCode: 13 });
-  expect(requestData).toHaveBeenCalledTimes(1);
+  expect(requestData).toHaveBeenCalledTimes(0);
 });

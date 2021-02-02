@@ -14,9 +14,9 @@ const AnalysisBord: React.FC = () => {
   return (
     <>
       {error
-        ? <div>{error}</div>
+        ? <div className="error-info">{error}</div>
         : isLoading
-          ? <div>Loading...</div>
+          ? <div className="loading-info">Loading...</div>
           : length
             ? (
               <div className="analysis-data">

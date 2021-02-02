@@ -1,12 +1,13 @@
 import {
-  all, fork, put, call, takeLatest, delay,
-  AllEffect, ForkEffect,
-  cancel, take, cancelled,
+  all, fork, put, call, takeLatest, delay, cancel, take, cancelled,
+  AllEffect, ForkEffect, PutEffect, CallEffect, CancelledEffect,
 } from 'redux-saga/effects';
 import { requestFinished, showError, clearError } from '../redux/actionsRequest';
 import { updateData } from '../redux/actionBitcoin';
 import { updateAnalyticTagCount, updateLongestPath } from '../redux/actionAnalytic';
-import { requestAnalicDataAction } from '../redux/type';
+import {
+  requestAnalicDataAction, AnalyticDataAction, RequestAction, BitcoinAction, tagsCount,
+} from '../redux/type';
 import { getRequest, getPage } from '../services/requestService';
 import { getTagsCount, getLongestPath } from '../services/analyticService';
 import {
@@ -17,13 +18,13 @@ function* requestWorker() {
   try {
     while (true) {
       try {
-        const response = yield call(() => getRequest(SERVER_HOST));
-        yield put(updateData(Object.values(response.bpi)));
+        const response = yield call(getRequest, SERVER_HOST);
+        yield put(updateData(Object.values(response)));
         yield put(requestFinished());
         yield delay(TIMER);
-      } catch (e) {
+      } catch (error) {
         yield put(requestFinished());
-        yield put(showError('Request failed'));
+        yield put(showError(error.message));
         yield delay(TIMER);
         yield put(clearError());
       }
@@ -44,27 +45,30 @@ function* requestWatcher() {
   }
 }
 
-function* requestPageWorker({ payload }: requestAnalicDataAction) {
+export function* requestPageWorker({ payload }: requestAnalicDataAction):
+Generator<CallEffect<string | Error | number | tagsCount> |
+          PutEffect<AnalyticDataAction>, void, unknown> {
   try {
     const response = yield call(getPage, payload);
-    const tagCount = yield call(getTagsCount, response);
-    yield put(updateAnalyticTagCount(tagCount));
-    const length = yield call(getLongestPath, response, Object.keys(tagCount)[0]);
-    yield put(updateLongestPath(length));
+    const tagCount = yield call(getTagsCount, <string>response);
+    yield put(updateAnalyticTagCount(<tagsCount>tagCount));
+    const length = yield call(getLongestPath, <string>response, Object.keys(tagCount)[0]);
+    yield put(updateLongestPath(<number>length));
+    yield put(clearError());
     yield put(requestFinished());
-  } catch (e) {
+  } catch (error) {
     yield put(requestFinished());
-    yield put(showError('Request failed'));
+    yield put(showError(error.message));
     yield delay(TIMER);
     yield put(clearError());
   }
 }
 
-function* requestPageWatcher() {
+export function* requestPageWatcher(): Generator<ForkEffect<never>, void, unknown> {
   yield takeLatest(ANALYTIC.REQUESTED_ANALYTIC, requestPageWorker);
 }
 
-export default function* rootSaga(): Generator<AllEffect<ForkEffect<void>>, void, unknown> {
+export function* rootSaga(): Generator<AllEffect<ForkEffect<void>>, void, unknown> {
   yield all([
     fork(requestWatcher),
     fork(requestPageWatcher),

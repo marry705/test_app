@@ -14,8 +14,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
-  
+} 
 html, body {
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
@@ -23,7 +22,6 @@ html, body {
   overflow: hidden;
   background-color: var(--main-light-color);
 }
-
 .main-wrapper {
   display: flex;
   flex-direction: column;
@@ -31,7 +29,6 @@ html, body {
   height: 100vh; 
   padding: 0 5%;
 }
-
 .info-wrapper {
   width: 100%;
   flex: 1 1 auto;

@@ -1,18 +1,25 @@
 export function getRequest<T>(url: string): Promise<T> {
   return fetch(url)
-    .then((response) => response.json())
+    .then((response) => {
+      if (response.status !== 200) throw new Error('Request failed');
+      return response.json();
+    })
+    .then((response) => response.bpi)
     .catch((error: Error) => error);
 }
 
 async function getPage(adress: string): Promise<string | Error> {
   const url = adress.indexOf('http') !== -1 ? adress : `https://${adress}`;
   try {
-    const pageText = await fetch(`https://cors-anywhere.herokuapp.com/${url}`, {
+    const pageText = fetch(`https://cors-anywhere.herokuapp.com/${url}`, {
       method: 'GET',
-    }).then((response) => response.text());
+    }).then((response) => {
+      if (response.status !== 200) throw new Error('Request failed');
+      return response.text();
+    });
     return pageText;
   } catch (e) {
-    return e;
+    throw new Error('Request failed');
   }
 }
 

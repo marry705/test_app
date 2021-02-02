@@ -20,10 +20,10 @@ const BitcoinTable: React.FC = () => {
 
   if (error) {
     return (
-      <div className="main-info">{error}</div>
+      <div className="error-info">{error}</div>
     );
   } if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="loading-info">Loading...</div>;
   }
   return (
     <>
@@ -46,6 +46,14 @@ const BitcoinTable: React.FC = () => {
           ))}
         </tbody>
       </table>
+      <a
+        href="https://www.coindesk.com/price/bitcoin"
+        target="_blank"
+        rel="noreferrer"
+        className="info-link"
+      >
+        Powered by CoinDesk
+      </a>
     </>
   );
 };

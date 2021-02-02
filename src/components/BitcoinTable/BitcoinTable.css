@@ -17,10 +17,26 @@
     background: #ffffff;
 }
 .info-field {
-    width: 100%;
-    margin-bottom: 15px;
-    margin-right: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: right;
+    color: var(--main-dark-color);
 }
-.main-info {
-    color: var(--main-dark-color)
+.info-link {
+    text-decoration: none;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color: var(--main-dark-color);
+    text-align: right;
 }
+.info-link:hover {
+    text-decoration: none;
+    color: var(--content-dark-focus);
+} 
+.error-info, .loading-info {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: center;
+}
+.error-info { color: var(--content-contrast-dark-color); }
+.loading-info { color: var(--content-contrast-light-color); }
