@@ -25,7 +25,7 @@ export const ROUTES = {
 
 export const SERVER_HOST = 'https://api.coindesk.com/v1/bpi/currentprice.json';
 
-export const TIMER = 10000;
+export const TIMER = 15000;
 
 export const dateOptions = {
   year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric',

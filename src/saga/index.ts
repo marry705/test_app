@@ -1,12 +1,12 @@
 import {
   all, fork, put, call, takeLatest, delay, cancel, take, cancelled,
-  AllEffect, ForkEffect, PutEffect, CallEffect, CancelledEffect,
+  AllEffect, ForkEffect, PutEffect, CallEffect,
 } from 'redux-saga/effects';
 import { requestFinished, showError, clearError } from '../redux/actionsRequest';
 import { updateData } from '../redux/actionBitcoin';
 import { updateAnalyticTagCount, updateLongestPath } from '../redux/actionAnalytic';
 import {
-  requestAnalicDataAction, AnalyticDataAction, RequestAction, BitcoinAction, tagsCount,
+  requestAnalicDataAction, AnalyticDataAction, tagsCount,
 } from '../redux/type';
 import { getRequest, getPage } from '../services/requestService';
 import { getTagsCount, getLongestPath } from '../services/analyticService';
