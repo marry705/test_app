@@ -6,7 +6,7 @@ export const updateAnalyticTagCount = (data: tagsCount): AnalyticDataAction => (
   payload: data,
 });
 
-export const updateLongestPath = (data: number): AnalyticDataAction => ({
+export const updateLongestPath = (data: string): AnalyticDataAction => ({
   type: ANALYTIC.UPDATE_LENGTH,
   payload: data,
 });

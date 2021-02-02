@@ -21,21 +21,22 @@ export function getTagsCount(webpage: string): tagsCount {
   return sortedTagsTable;
 }
 
-export function getLongestPath(webpage: string, tagName: string): number {
+export function getLongestPath(webpage: string): string {
   const doc = new DOMParser().parseFromString(webpage, 'text/html');
-  const route = getDomDepthLevel(doc, tagName);
-  return route.route.length;
+  const route = getDomDepthLevel(doc);
+  return route.route.join(' - ');
 }
 
-function getDomDepthLevel(root: Document | Element, tagName: string): {route: (Document | Element)[], level: number} {
-  let pathInfo = { route: [root], level: 0 };
+function getDomDepthLevel(root: Document | Element): {route: string[], level: number} {
+  const route: string[] = [];
+  let pathInfo = { route, level: 0 };
   for (let i = 0, j = root.children.length; i < j; i += 1) {
-    const curNodePathInfo = getDomDepthLevel(root.children[i], tagName);
+    const curNodePathInfo = getDomDepthLevel(root.children[i]);
     if (curNodePathInfo.level > pathInfo.level) {
       pathInfo = curNodePathInfo;
     }
   }
-  pathInfo.route.unshift(root);
+  pathInfo.route.unshift(root.nodeName);
   pathInfo.level += 1;
   return pathInfo;
 }

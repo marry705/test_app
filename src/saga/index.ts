@@ -46,14 +46,14 @@ function* requestWatcher() {
 }
 
 export function* requestPageWorker({ payload }: requestAnalicDataAction):
-Generator<CallEffect<string | Error | number | tagsCount> |
+Generator<CallEffect<string | Error | (Document | Element)[] | tagsCount> |
           PutEffect<AnalyticDataAction>, void, unknown> {
   try {
     const response = yield call(getPage, payload);
     const tagCount = yield call(getTagsCount, <string>response);
     yield put(updateAnalyticTagCount(<tagsCount>tagCount));
-    const length = yield call(getLongestPath, <string>response, Object.keys(tagCount)[0]);
-    yield put(updateLongestPath(<number>length));
+    const longestPath = yield call(getLongestPath, <string>response);
+    yield put(updateLongestPath(<string>longestPath));
     yield put(clearError());
     yield put(requestFinished());
   } catch (error) {

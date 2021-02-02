@@ -27,7 +27,7 @@ afterEach(cleanup);
 test('Checking the initial rendering of the component AnalysisBord with Loading', async () => {
   const analyticState:AnalyticDataState = {
     tagsCount: {},
-    length: 0,
+    longestPath: '',
   };
   const requestState:RequestState = {
     isLoading: true,
@@ -58,7 +58,7 @@ test('Checking the initial rendering of the component AnalysisBord with Loading'
 test('Checking the initial rendering of the component AnalysisBord with Error', async () => {
   const analyticState:AnalyticDataState = {
     tagsCount: {},
-    length: 0,
+    longestPath: '',
   };
   const requestState:RequestState = {
     isLoading: false,
@@ -93,7 +93,7 @@ test('Checking the initial rendering of the component AnalysisBord with Data', a
       div: 2,
       html: 1,
     },
-    length: 6,
+    longestPath: 'html - body - div.book - span',
   };
   const requestState:RequestState = {
     isLoading: false,

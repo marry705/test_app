@@ -32,7 +32,7 @@ const initialState:BitcoinDataState = {
 };
 const analyticState:AnalyticDataState = {
   tagsCount: {},
-  length: 0,
+  longestPath: '',
 };
 const requestState:RequestState = {
   isLoading: false,

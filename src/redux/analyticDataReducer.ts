@@ -5,7 +5,7 @@ import {
 
 const initialState: AnalyticDataState = {
   tagsCount: {},
-  length: 0,
+  longestPath: '',
 };
 
 const analyticDataReducer = (
@@ -15,7 +15,7 @@ const analyticDataReducer = (
   switch (action.type) {
     case REQUEST.ADD_ERROR_MESSAGE:
     case ANALYTIC.CLEAR_ANALYTIC: {
-      return { ...state, length: 0, tagsCount: {} };
+      return { ...state, longestPath: '', tagsCount: {} };
     }
 
     case ANALYTIC.UPDATE_TAG_COUNT: {
@@ -23,7 +23,7 @@ const analyticDataReducer = (
     }
 
     case ANALYTIC.UPDATE_LENGTH: {
-      return { ...state, length: (<updateLongestPathAction>action).payload };
+      return { ...state, longestPath: (<updateLongestPathAction>action).payload };
     }
 
     default: return state;

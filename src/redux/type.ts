@@ -26,7 +26,7 @@ export type BitcoinDataState = {
 
 export type AnalyticDataState = {
     tagsCount: tagsCount,
-    length: number,
+    longestPath: string,
 };
 
 interface requestDataAction {
@@ -79,7 +79,7 @@ export type updateAnalyticTagCountAction = {
 
 export type updateLongestPathAction = {
     type: typeof ANALYTIC.UPDATE_LENGTH,
-    payload: number,
+    payload: string,
 }
 
 export type requestAnalicDataAction = {

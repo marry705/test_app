@@ -7,7 +7,7 @@ import { StateType } from '../../redux/type';
 const AnalysisBord: React.FC = () => {
   const dispatch = useDispatch();
   const { isLoading, error } = useSelector((state: StateType) => state.request);
-  const { tagsCount, length } = useSelector((state: StateType) => state.analyticData);
+  const { tagsCount, longestPath } = useSelector((state: StateType) => state.analyticData);
 
   React.useEffect(() => () => dispatch(clearAnalyticData()), [dispatch]);
 
@@ -17,11 +17,11 @@ const AnalysisBord: React.FC = () => {
         ? <div className="error-info">{error}</div>
         : isLoading
           ? <div className="loading-info">Loading...</div>
-          : length
+          : longestPath.length
             ? (
               <div className="analysis-data">
                 <div className="info-field">
-                  {length}
+                  {longestPath}
                 </div>
                 <table className="info-table">
                   <thead>
