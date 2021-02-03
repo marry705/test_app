@@ -11,3 +11,9 @@ $ npm run build
 
 ## Test
 $ npm run test
+
+
+To develop the application:
+1. Used Redux to store data and shared between components.
+2. Used Redux-saga to make application side effects (data fetching).
+3. Used [allorigins.win](https://allorigins.win/) for CORS
