@@ -67,7 +67,7 @@ test('Checking the initial rendering of the component BitcoinTable with data', a
 
   expect(requestData).toHaveBeenCalledTimes(1);
 
-  let tableTh = await screen.findByText('Code');
+  let tableTh = await screen.findByText('Code*');
   expect(tableTh).toBeInTheDocument();
   tableTh = await screen.findByText('Description');
   expect(tableTh).toBeInTheDocument();
@@ -124,7 +124,7 @@ test('Checking the sort function of the component BitcoinTable', async () => {
     );
   });
 
-  let tableTh = await screen.findByText('Code');
+  let tableTh = await screen.findByText('Code*');
   expect(tableTh).toBeInTheDocument();
   fireEvent.click(tableTh);
   expect(sortData).toHaveBeenCalledTimes(1);

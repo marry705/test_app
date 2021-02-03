@@ -2,7 +2,9 @@ import {
   all, fork, put, call, takeLatest, delay, cancel, take, cancelled,
   AllEffect, ForkEffect, PutEffect, CallEffect,
 } from 'redux-saga/effects';
-import { requestFinished, showError, clearError } from '../redux/actionsRequest';
+import {
+  requestFinished, showError, clearError, requestData,
+} from '../redux/actionsRequest';
 import { updateData } from '../redux/actionBitcoin';
 import { updateAnalyticTagCount, updateLongestPath } from '../redux/actionAnalytic';
 import {
@@ -11,13 +13,14 @@ import {
 import { getRequest, getPage } from '../services/requestService';
 import { getTagsCount, getLongestPath } from '../services/analyticService';
 import {
-  REQUEST, SERVER_HOST, ANALYTIC, TIMER,
+  REQUEST, SERVER_HOST, ANALYTIC, TIMER, TIMER_ERROR,
 } from '../constants';
 
 function* requestWorker() {
   try {
     while (true) {
       try {
+        yield put(requestData());
         const response = yield call(getRequest, SERVER_HOST);
         if (!Object.values(response).length) {
           throw new Error('No connection');
@@ -28,8 +31,9 @@ function* requestWorker() {
       } catch (error) {
         yield put(requestFinished());
         yield put(showError(error.message));
-        yield delay(TIMER);
+        yield delay(TIMER_ERROR);
         yield put(clearError());
+        yield delay(TIMER);
       }
     }
   } finally {
@@ -41,7 +45,7 @@ function* requestWorker() {
 }
 
 function* requestWatcher() {
-  while (yield take(REQUEST.REQUESTED_DATA)) {
+  while (yield take(REQUEST.START_REQUESTED_DATA)) {
     const backRequest = yield fork(requestWorker);
     yield take(REQUEST.STOP_REQUESTED_DATA);
     yield cancel(backRequest);

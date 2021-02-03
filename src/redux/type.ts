@@ -54,11 +54,17 @@ interface requestStopedAction {
     payload: string,
 }
 
+interface requestStartAction {
+    type: typeof REQUEST.START_REQUESTED_DATA,
+    payload: string,
+}
+
 export type RequestAction = requestDataAction |
     requestFinishedAction |
     showErrorAction |
     clearErrorAction |
-    requestStopedAction;
+    requestStopedAction |
+    requestStartAction;
 
 export type updateDataAction = {
     type: typeof DATA.UPDATE_DATE,

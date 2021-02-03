@@ -3,6 +3,7 @@ export const REQUEST = {
   REQUEST_FINISHED: 'REQUEST_FINISHED',
   ADD_ERROR_MESSAGE: 'ADD_ERROR_MESSAGE',
   CLEAR_ERROR_MESSAGE: 'CLEAR_ERROR_MESSAGE',
+  START_REQUESTED_DATA: 'START_REQUESTED_DATA',
   STOP_REQUESTED_DATA: 'STOP_REQUESTED_DATA',
 };
 
@@ -26,6 +27,7 @@ export const ROUTES = {
 export const SERVER_HOST = 'https://api.coindesk.com/v1/bpi/currentprice.json';
 
 export const TIMER = 15000;
+export const TIMER_ERROR = 5000;
 
 export const dateOptions = {
   year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric',

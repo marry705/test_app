@@ -25,3 +25,8 @@ export const requestStoped = (): RequestAction => ({
   type: REQUEST.STOP_REQUESTED_DATA,
   payload: '',
 });
+
+export const requestStarted = (): RequestAction => ({
+  type: REQUEST.START_REQUESTED_DATA,
+  payload: '',
+});

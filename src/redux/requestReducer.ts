@@ -24,7 +24,6 @@ const requestReducer = (
     case REQUEST.CLEAR_ERROR_MESSAGE:
       return { ...state, error: '' };
 
-    case REQUEST.STOP_REQUESTED_DATA:
     case ANALYTIC.CLEAR_ANALYTIC:
       return { ...state, error: '', isLoading: false };
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { requestData, requestStoped } from '../../redux/actionsRequest';
+import { requestStarted, requestStoped } from '../../redux/actionsRequest';
 import { updateSortField } from '../../redux/actionBitcoin';
 import { StateType } from '../../redux/type';
 import { dateOptions } from '../../constants';
@@ -14,7 +14,7 @@ const BitcoinTable: React.FC = () => {
   const { bitcoinData, time, sortField } = useSelector((state: StateType) => state.bitcoinData);
 
   React.useEffect(() => {
-    dispatch(requestData());
+    dispatch(requestStarted());
     return () => dispatch(requestStoped());
   }, [dispatch]);
 
@@ -31,7 +31,7 @@ const BitcoinTable: React.FC = () => {
       <div className="info-field">
         The last update was at
         {' '}
-        {new Date(time).toLocaleDateString('ru', dateOptions)}
+        {new Date(time).toLocaleDateString('en-US', dateOptions)}
       </div>
       <table className="info-table">
         <thead>

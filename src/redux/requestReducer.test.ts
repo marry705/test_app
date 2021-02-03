@@ -23,6 +23,4 @@ test('Request Reducer', () => {
   expect(reducer(mockDataLoading, { type: REQUEST.REQUEST_FINISHED, payload: '' })).toEqual(initialState);
   expect(reducer(initialState, { type: REQUEST.ADD_ERROR_MESSAGE, payload: 'ErrorMessage' })).toEqual(mockDataError);
   expect(reducer(mockDataError, { type: REQUEST.CLEAR_ERROR_MESSAGE, payload: '' })).toEqual(initialState);
-  expect(reducer(mockDataError, { type: REQUEST.STOP_REQUESTED_DATA, payload: '' })).toEqual(initialState);
-  expect(reducer(mockDataLoading, { type: REQUEST.STOP_REQUESTED_DATA, payload: '' })).toEqual(initialState);
 });

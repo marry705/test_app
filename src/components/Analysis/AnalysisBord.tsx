@@ -26,6 +26,8 @@ const AnalysisBord: React.FC = () => {
     <>
       <div className="analysis-data">
         <div className="info-field">
+          The longest path in the document tree
+          {' '}
           {longestPath}
         </div>
         <table className="info-table">
