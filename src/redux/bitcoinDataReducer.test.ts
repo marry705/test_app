@@ -5,13 +5,13 @@ import { DATA } from '../constants';
 test('Bitcoin Reducer', () => {
   const initialState:BitcoinDataState = {
     bitcoinData: [],
-    time: '',
+    time: new Date().toString(),
     sortField: 'code',
   };
 
   const mockDataSort:BitcoinDataState = {
     bitcoinData: [],
-    time: '',
+    time: new Date().toString(),
     sortField: 'rate',
   };
 

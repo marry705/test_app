@@ -7,7 +7,7 @@ let bitcoinData: Bitcoin[] = [];
 
 const initialState: BitcoinDataState = {
   bitcoinData,
-  time: '',
+  time: new Date().toString(),
   sortField: 'code',
 };
 

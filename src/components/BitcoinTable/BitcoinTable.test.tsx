@@ -27,7 +27,7 @@ afterEach(() => {
 
 const initialState:BitcoinDataState = {
   bitcoinData: [],
-  time: '',
+  time: new Date().toString(),
   sortField: 'code',
 };
 const analyticState:AnalyticDataState = {
