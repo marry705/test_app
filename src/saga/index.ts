@@ -66,7 +66,7 @@ Generator<CallEffect<string | Error | (Document | Element)[] | tagsCount> |
   } catch (error) {
     yield put(requestFinished());
     yield put(showError(error.message));
-    yield delay(TIMER);
+    yield delay(TIMER_ERROR);
     yield put(clearError());
   }
 }
